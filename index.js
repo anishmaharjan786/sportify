@@ -6,7 +6,7 @@ const mysql = require('mysql');
 const port = 8000;
 const fs = require('fs');
 const { response } = require('express');
-require('startup/production');
+require('startup/production')(app);
 
 //parse application/json
 
