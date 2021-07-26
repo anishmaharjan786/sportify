@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>view and insert</title>
+</head>
+<body>
+    <main>
+        <div id="form">
+            <form class="insert">
+                <lable>First Name:</lable>
+                <input type ="text" placeholder= "please enter your first name" name="fname">
+                <br><br>
+                <lable>Location:</lable>
+                <input type = "text" placeholder = "please enter your location" name= "location">
+                <br>
+                <input type ="submit" value="create new user" id="create">
+            </form>
+        </div>
+        <div id ="view">
+            <table>
+                <tr>
+                    <th>FirstName</th>
+                    <th>Location</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        
+    </main>    
+</body>
+<script>
+    document.getElementById('view').hidden = true;
+    document.getElementById('create').addEventListener("click", function(){
+        documnt.getElementById('form').hidden = true;
+        document.getElementById('view').hidden = false;
+    });
+</script>
+</html>
