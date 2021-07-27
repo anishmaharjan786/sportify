@@ -3,14 +3,13 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
 const mysql = require('mysql');
-const port = 8000;
+const port = 8080;
 const fs = require('fs');
 const { response } = require('express');
-require('startup/production')(app);
 
 //parse application/json
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 // create database connection
 const conn = mysql.createConnection({
@@ -25,21 +24,26 @@ conn.connect((err) => {
     console.log('Mysql Connected')
 });
 
-
-app.get("/", (req,res)=> {
-    res.render('public/index.html');
+app.get("/", (req,res) => {
+    res.end('this is my page');
+    
 })
+
+
+// app.get("/", (req,res)=> {
+//     res.render('public/index.html');
+// })
 
 // //create new record
 
-// app.post("/api/create", (req,res) => {
-//     let data = { firstName : req.body.firstname, location : req.body.location };
-//     let sql = "INSERT INTO employee_table SET ?";
-//     let query = conn.query(sql, data, (err, result)=>{
-//         if(err) throw err;
-//         res.send(JSON.stringify({status: 200, error: null, response: "New Record Created"}))
-//     });
-// });
+app.post("/api/create", (req,res) => {
+    let data = { firstName : req.body.firstname, location : req.body.location };
+    let sql = "INSERT INTO employee_table SET ?";
+    let query = conn.query(sql, data, (err, result)=>{
+        if(err) throw err;
+        res.send(JSON.stringify({status: 200, error: null, response: "New Record Created"}))
+    });
+});
 
 // //show all records
 
